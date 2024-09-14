@@ -1,0 +1,35 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:base",
+    "schedule:weekly",
+    "group:allNonMajor",
+    ":disableDependencyDashboard"
+  ],
+  "ignoreDeps": [
+    "node",
+    "nanoid"
+  ],
+  "labels": [
+    "dependencies"
+  ],
+  "packageRules": [
+    {
+      "depTypeList": [
+        "peerDependencies"
+      ],
+      "enabled": false
+    },
+    {
+      "allowedVersions": "<3.0.0",
+      "matchPackageNames": [
+        "estree-walker"
+      ]
+    }
+  ],
+  "pin": {
+    "enabled": false
+  },
+  "rangeStrategy": "bump",
+  "postUpdateOptions": ["pnpmDedupe"]
+}
