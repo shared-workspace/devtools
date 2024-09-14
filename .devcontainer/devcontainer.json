@@ -1,29 +1,48 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/typescript-node
 {
-  "name": "Dev Tool",
-  "build": {
-		"dockerfile": "Dockerfile"
-	},
-  "features": {
-  	"ghcr.io/devcontainers/features/desktop-lite:1": {
-  	  "version": "latest",
-  		"noVncVersion": "1.2.0",
-  		"password": "vscode",
-  		"webPort": "6080",
-  		"vncPort": "5901"
-  	}
-  },
-  "forwardPorts": [6080, 5901],
-  "portsAttributes": {
-  	"6080": {
-  		"label": "VNC web client (noVNC)",
-  		"onAutoForward": "silent"
-  	},
-  	"5901": {
-  		"label": "VNC TCP port",
-  		"onAutoForward": "silent"
-  	}
-  },
-  "hostRequirements": {
-	  "memory": "9gb"
-  }
+	"name": "Browser Devtool Extention"
+	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+	// ,"image": "mcr.microsoft.com/devcontainers/typescript-node:1-22-bookworm"
+	,"image": "mcr.microsoft.com/devcontainers/universal:2"
+
+	// Features to add to the dev container. More info: https://containers.dev/features.
+	,"features": {
+		"ghcr.io/devcontainers/features/desktop-lite:1": {
+			"version": "latest",
+			"noVncVersion": "1.2.0",
+			"password": "codespaces",
+			"webPort": "6080",
+			"vncPort": "5901"
+		}
+	}
+
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	,"forwardPorts": [6080, 5901]
+	,"portsAttributes": {
+		"6080": {
+			"label": "VNC web client (noVNC)",
+			"onAutoForward": "silent"
+		},
+		"5901": {
+			"label": "VNC TCP port",
+			"onAutoForward": "silent"
+		}
+	}
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	,"postCreateCommand": "git clone https://github.com/vuejs/devtools-next.git && rm -rf ./devtools-next/.git && mv ./devtools-next/* . && mv ./devtools-next/.* . &&  && yarn install"
+
+	// Configure tool-specific properties.
+	,"customizations": {
+		"vscode": {
+			"extensions": [
+				"GitHub.copilot",
+				"GitHub.copilot-chat"
+			]
+		}
+	}
+
+	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+	,"remoteUser": "root"
 }
