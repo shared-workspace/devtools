@@ -57,6 +57,13 @@ export const builtinTab: [string, ModuleBuiltinTab[]][] = [
       path: 'graph',
       title: 'Graph',
     },
+    {
+      icon: 'i-carbon-paint-brush',
+      name: 'style',
+      order: -100,
+      path: 'style',
+      title: 'Style',
+    },
   ]],
 ]
 

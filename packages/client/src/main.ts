@@ -19,6 +19,7 @@ import PiniaPage from '~/pages/pinia.vue'
 import RouterPage from '~/pages/router.vue'
 import Settings from '~/pages/settings.vue'
 import App from './App.vue'
+import Style from './pages/style.vue'
 import '@unocss/reset/tailwind.css'
 import 'uno.css'
 import '@vue/devtools-ui/style.css'
@@ -28,6 +29,7 @@ import '~/assets/styles/main.css'
 const routes = [
   { path: '/', component: Index },
   { path: '/overview', component: Overview },
+  { path: '/style', component: Style },
   { path: '/components', component: Components },
   { path: '/pinia', component: PiniaPage },
   { path: '/router', component: RouterPage },
